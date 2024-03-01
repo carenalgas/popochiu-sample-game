@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://cc2dwxdejbfl1"]
+
+[ext_resource type="Script" path="res://game/rooms/house/room_house.gd" id="1_qtcms"]
+[ext_resource type="PackedScene" uid="uid://dd7uwt0ei71w6" path="res://game/rooms/house/props/background/prop_background.tscn" id="2_583df"]
+[ext_resource type="PackedScene" uid="uid://uvtywyf3pq1a" path="res://addons/popochiu/engine/objects/walkable_area/popochiu_walkable_area.tscn" id="2_ed7ho"]
+[ext_resource type="Script" path="res://game/rooms/house/walkable_areas/floor/walkable_area_floor.gd" id="3_k62du"]
+[ext_resource type="Texture2D" uid="uid://b58qrqbifk8eo" path="res://game/rooms/house/props/background/house_bg.png" id="4_cy6nd"]
+[ext_resource type="PackedScene" uid="uid://u51bcyinwl7b" path="res://game/characters/goddiu/character_goddiu.tscn" id="5_n6ktr"]
+[ext_resource type="PackedScene" uid="uid://mjrgqhto8p6g" path="res://game/rooms/house/props/drawer/prop_drawer.tscn" id="7_v5net"]
+[ext_resource type="Texture2D" uid="uid://vmm5yj2yosc1" path="res://game/rooms/house/props/drawer/house_drawer.png" id="9_q0mee"]
+[ext_resource type="PackedScene" uid="uid://bef66t4c81p4r" path="res://game/rooms/house/props/door/prop_door.tscn" id="10_ur368"]
+[ext_resource type="Texture2D" uid="uid://c17dd0uadipwv" path="res://game/rooms/house/props/door/house_door.png" id="12_qifba"]
+[ext_resource type="PackedScene" uid="uid://bil27y44847wc" path="res://game/characters/popsy/character_popsy.tscn" id="12_yd7us"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_kuj1q"]
+vertices = PackedVector2Array(125, 28, 49, 40, -16, 40, -135, 31, -122, 0, 80, -7)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-129, -10, 84, -18, 149, 35, 51, 50, -17, 50, -150, 40)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="RoomHouse" type="Node2D"]
+script = ExtResource("1_qtcms")
+script_name = "House"
+popochiu_placeholder = null
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Floor" parent="WalkableAreas" instance=ExtResource("2_ed7ho")]
+position = Vector2(160, 90)
+script = ExtResource("3_k62du")
+script_name = "Floor"
+description = "Floor"
+
+[node name="Perimeter" type="NavigationRegion2D" parent="WalkableAreas/Floor"]
+modulate = Color(0, 1, 0, 1)
+navigation_polygon = SubResource("NavigationPolygon_kuj1q")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Background" parent="Props" instance=ExtResource("2_583df")]
+position = Vector2(160, 90)
+texture = ExtResource("4_cy6nd")
+interaction_polygon = PackedVector2Array()
+
+[node name="Drawer" parent="Props" instance=ExtResource("7_v5net")]
+position = Vector2(23, 90)
+texture = ExtResource("9_q0mee")
+frames = 2
+baseline = 3
+walk_to_point = Vector2(29, -1)
+interaction_polygon = PackedVector2Array(-16, 16, -13, -7, -8, -18, 11, -16, 10, 5, 4, 19)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Drawer"]
+visible = false
+polygon = PackedVector2Array(-16, 16, -13, -7, -8, -18, 11, -16, 10, 5, 4, 19)
+
+[node name="Door" parent="Props" instance=ExtResource("10_ur368")]
+position = Vector2(70, 48)
+texture = ExtResource("12_qifba")
+frames = 2
+walk_to_point = Vector2(27, 34)
+interaction_polygon = PackedVector2Array(-11, 21, -11, -14, 8, -29, 28, -17, 30, 23)
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="Props/Door"]
+visible = false
+polygon = PackedVector2Array(-11, 21, -11, -14, 8, -29, 28, -17, 30, 23)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="CharacterGoddiu *" parent="Characters" instance=ExtResource("5_n6ktr")]
+position = Vector2(76, 81)
+interaction_polygon = PackedVector2Array()
+
+[node name="CharacterPopsy *" parent="Characters" instance=ExtResource("12_yd7us")]
+position = Vector2(231, 100)
+interaction_polygon = PackedVector2Array()

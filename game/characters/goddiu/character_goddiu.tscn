@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://u51bcyinwl7b"]
+
+[ext_resource type="Script" path="res://game/characters/goddiu/character_goddiu.gd" id="1_1ogtq"]
+[ext_resource type="Resource" uid="uid://dovbon7xbfdoj" path="res://game/characters/goddiu/audio/vo_goddiu_normal_01.tres" id="2_hqyg2"]
+[ext_resource type="AnimationLibrary" uid="uid://dados3ddq5ipn" path="res://game/characters/goddiu/goddiu_animations.tres" id="2_kdt0b"]
+[ext_resource type="Texture2D" uid="uid://5u05cykom5ud" path="res://game/characters/goddiu/goddiu.png" id="3_7iqvq"]
+[ext_resource type="Resource" uid="uid://cq73kk7tuxsc0" path="res://game/characters/goddiu/audio/vo_goddiu_normal_02.tres" id="3_vl6ce"]
+[ext_resource type="Resource" uid="uid://cscwwoyonth3k" path="res://game/characters/goddiu/audio/vo_goddiu_normal_03.tres" id="4_qhlun"]
+
+[node name="CharacterGoddiu" type="Area2D"]
+script = ExtResource("1_1ogtq")
+flips_when = 2
+voices = [{
+"emotion": "",
+"variations": Array[Resource("res://addons/popochiu/engine/audio_manager/audio_cue_sound.gd")]([ExtResource("2_hqyg2"), ExtResource("3_vl6ce"), ExtResource("4_qhlun")])
+}]
+popochiu_placeholder = null
+script_name = "Goddiu"
+description = "Goddiu"
+clickable = false
+cursor = 8
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="BaselineHelper" type="Line2D" parent="."]
+points = PackedVector2Array(-10000, 0, 10000, 0)
+width = 1.0
+
+[node name="WalkToHelper" type="Marker2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="WalkToHelper"]
+offset_left = -2.5
+offset_top = -2.5
+offset_right = 2.5
+offset_bottom = 2.5
+color = Color(0, 1, 1, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("2_kdt0b")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-2, -24)
+texture = ExtResource("3_7iqvq")
+hframes = 4
+vframes = 4
+
+[node name="DialogPos" type="Marker2D" parent="."]
+position = Vector2(-6, -47)

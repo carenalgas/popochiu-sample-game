@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://gljttppte5fo"]
+
+[ext_resource type="Script" path="res://game/inventory_items/apple/item_apple_state.gd" id="1_qed1h"]
+
+[resource]
+resource_name = "Apple"
+script = ExtResource("1_qed1h")
+script_name = "Apple"
+scene = "res://game/inventory_items/apple/item_apple.tscn"
