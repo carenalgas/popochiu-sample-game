@@ -1,8 +1,8 @@
 extends PopochiuInventoryItem
 
-const Data := preload('item_apple_state.gd')
+const Data := preload('inventory_item_key_state.gd')
 
-var state: Data = load('res://game/inventory_items/apple/item_apple.tres')
+var state: Data = load('res://game/inventory_items/key/inventory_item_key.tres')
 
 
 # ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ GODOT ░░░░

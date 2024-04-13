@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bxmoawfsu7h6n"]
+
+[ext_resource type="Script" path="res://game/inventory_items/toy_car/inventory_item_toy_car_state.gd" id="1_7nf4u"]
+
+[resource]
+resource_name = "ToyCar"
+script = ExtResource("1_7nf4u")
+script_name = "ToyCar"
+scene = "res://game/inventory_items/toy_car/inventory_item_toy_car.tscn"

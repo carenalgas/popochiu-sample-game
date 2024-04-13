@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b6awasvlnoayr"]
-
-[ext_resource type="Script" path="res://game/inventory_items/key/item_key_state.gd" id="1_b82av"]
-
-[resource]
-resource_name = "Key"
-script = ExtResource("1_b82av")
-script_name = "Key"
-scene = "res://game/inventory_items/key/item_key.tscn"

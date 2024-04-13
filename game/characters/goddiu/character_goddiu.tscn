@@ -19,6 +19,7 @@ script_name = "Goddiu"
 description = "Goddiu"
 clickable = false
 cursor = 8
+interaction_polygon = PackedVector2Array()
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
@@ -47,6 +48,7 @@ position = Vector2(-2, -24)
 texture = ExtResource("3_7iqvq")
 hframes = 4
 vframes = 4
+frame = 2
 
 [node name="DialogPos" type="Marker2D" parent="."]
 position = Vector2(-6, -47)

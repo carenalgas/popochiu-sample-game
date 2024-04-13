@@ -13,8 +13,10 @@ script_name = "Popsy"
 description = "Popsy"
 walk_to_point = Vector2(-39, -9)
 cursor = 8
+interaction_polygon = PackedVector2Array()
 
 [node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(-3, -7)
 polygon = PackedVector2Array(-12, -12, 6, -16, 22, -6, 21, 11, 1, 18, -24, 9)
 
