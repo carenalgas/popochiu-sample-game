@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PopochiuSettings" load_steps=3 format=3 uid="uid://dhuy5rq0dcy6s"]
 
-[ext_resource type="PackedScene" uid="uid://cbfmr1exsdl41" path="res://game/graphic_interface/graphic_interface.tscn" id="1_3kg24"]
+[ext_resource type="PackedScene" uid="uid://scopq7ejjgdq" path="res://game/graphic_interface/graphic_interface.tscn" id="1_3kg24"]
 [ext_resource type="Script" path="res://addons/popochiu/engine/objects/popochiu_settings.gd" id="1_dd8xv"]
 
 [resource]

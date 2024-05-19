@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbysgd5cjenyp"]
+[gd_scene load_steps=8 format=3 uid="uid://b4cbjse8hmv8c"]
 
-[ext_resource type="Theme" uid="uid://dpequqav4rjaf" path="" id="1_4jpp3"]
-[ext_resource type="FontFile" uid="uid://jufv4ndlyxky" path="res://game/graphic_interface/fonts/monkeyisland_1991.ttf" id="2_x0xkn"]
-[ext_resource type="Script" path="res://game/graphic_interface/components/dialog_text/dialog_text.gd" id="3_o13wr"]
-[ext_resource type="Texture2D" uid="uid://bkslvtuu0sjkk" path="res://game/graphic_interface/components/dialog_text/dialog_continue.png" id="4_0rdh8"]
-[ext_resource type="Script" path="res://game/graphic_interface/components/dialog_text/portrait_text_panel.gd" id="5_7ku78"]
+[ext_resource type="Theme" uid="uid://dpequqav4rjaf" path="" id="1_ixulu"]
+[ext_resource type="FontFile" uid="uid://d2tmw1ew25em6" path="res://game/graphic_interface/fonts/monkeyisland_1991.ttf" id="2_ilyxu"]
+[ext_resource type="Script" path="res://game/graphic_interface/components/dialog_text/dialog_text.gd" id="3_vn8rq"]
+[ext_resource type="Texture2D" uid="uid://dn2gsbs0hxnuk" path="res://game/graphic_interface/components/dialog_text/dialog_continue.png" id="4_21qb4"]
+[ext_resource type="Script" path="res://game/graphic_interface/components/dialog_text/portrait_text_panel.gd" id="5_abcd4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cff0b"]
 bg_color = Color(0, 0, 0, 1)
@@ -29,7 +29,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_4jpp3")
+theme = ExtResource("1_ixulu")
 
 [node name="AboveCharacterText" type="RichTextLabel" parent="."]
 visible = false
@@ -42,12 +42,12 @@ size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/normal_font = ExtResource("2_x0xkn")
+theme_override_fonts/normal_font = ExtResource("2_ilyxu")
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
 meta_underlined = false
-script = ExtResource("3_o13wr")
+script = ExtResource("3_vn8rq")
 
 [node name="ContinueIcon" type="TextureProgressBar" parent="AboveCharacterText"]
 texture_filter = 1
@@ -60,7 +60,7 @@ offset_bottom = 16.0
 grow_horizontal = 0
 value = 100.0
 fill_mode = 2
-texture_progress = ExtResource("4_0rdh8")
+texture_progress = ExtResource("4_21qb4")
 
 [node name="PortraitTextPanel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -75,7 +75,7 @@ offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_cff0b")
-script = ExtResource("5_7ku78")
+script = ExtResource("5_abcd4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PortraitTextPanel"]
 layout_mode = 2
@@ -102,12 +102,12 @@ size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/normal_font = ExtResource("2_x0xkn")
+theme_override_fonts/normal_font = ExtResource("2_ilyxu")
 bbcode_enabled = true
 text = "[wave]Hi my popochiu!!![/wave]"
 scroll_active = false
 meta_underlined = false
-script = ExtResource("3_o13wr")
+script = ExtResource("3_vn8rq")
 used_when = 1
 
 [node name="ContinueIcon" type="TextureProgressBar" parent="PortraitTextPanel/HBoxContainer/PanelContainer/PortraitText"]
@@ -124,7 +124,7 @@ grow_horizontal = 0
 grow_vertical = 0
 value = 100.0
 fill_mode = 2
-texture_progress = ExtResource("4_0rdh8")
+texture_progress = ExtResource("4_21qb4")
 
 [node name="RightAvatar" type="TextureRect" parent="PortraitTextPanel/HBoxContainer"]
 texture_filter = 1
@@ -152,13 +152,13 @@ size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/normal_font = ExtResource("2_x0xkn")
+theme_override_fonts/normal_font = ExtResource("2_ilyxu")
 bbcode_enabled = true
 text = "[center]Hi my friend[/center]"
 fit_content = true
 scroll_active = false
 meta_underlined = false
-script = ExtResource("3_o13wr")
+script = ExtResource("3_vn8rq")
 used_when = 2
 
 [node name="ContinueIcon" type="TextureProgressBar" parent="CaptionText"]
@@ -175,4 +175,4 @@ grow_horizontal = 0
 grow_vertical = 0
 value = 100.0
 fill_mode = 2
-texture_progress = ExtResource("4_0rdh8")
+texture_progress = ExtResource("4_21qb4")

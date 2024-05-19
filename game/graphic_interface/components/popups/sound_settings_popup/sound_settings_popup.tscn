@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cm216c25cghrg"]
+[gd_scene load_steps=7 format=3 uid="uid://dvf6drjukx4mo"]
 
-[ext_resource type="Theme" uid="uid://dpequqav4rjaf" path="" id="1_niseu"]
-[ext_resource type="Script" path="res://game/graphic_interface/components/popups/sound_settings_popup/sound_settings_popup.gd" id="2_2ofuo"]
-[ext_resource type="Texture2D" uid="uid://tpjyvgw11fst" path="res://game/graphic_interface/resources/sprites/close.png" id="3_l8mlu"]
-[ext_resource type="Texture2D" uid="uid://bhgsturrpymx" path="res://game/graphic_interface/resources/sprites/close_highlight.png" id="4_bkrji"]
-[ext_resource type="PackedScene" uid="uid://p07os5p5cid" path="res://game/graphic_interface/components/sound_volumes/sound_volumes.tscn" id="5_1rc7t"]
+[ext_resource type="Theme" uid="uid://dpequqav4rjaf" path="" id="1_kpqmu"]
+[ext_resource type="Script" path="res://game/graphic_interface/components/popups/sound_settings_popup/sound_settings_popup.gd" id="2_cynxp"]
+[ext_resource type="Texture2D" uid="uid://cggb6b1v4rlxq" path="res://game/graphic_interface/resources/sprites/close.png" id="3_am225"]
+[ext_resource type="Texture2D" uid="uid://ungmauyei0nm" path="res://game/graphic_interface/resources/sprites/close_highlight.png" id="4_5tkef"]
+[ext_resource type="PackedScene" uid="uid://gcca2nghntdi" path="res://game/graphic_interface/components/sound_volumes/sound_volumes.tscn" id="5_h4bul"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_roir4"]
 bg_color = Color(0, 0, 0, 0.498039)
@@ -15,9 +15,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_niseu")
+theme = ExtResource("1_kpqmu")
 theme_override_styles/panel = SubResource("StyleBoxFlat_roir4")
-script = ExtResource("2_2ofuo")
+script = ExtResource("2_cynxp")
 
 [node name="PopupPanel" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -44,11 +44,11 @@ visible = false
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 4
-texture_normal = ExtResource("3_l8mlu")
-texture_pressed = ExtResource("4_bkrji")
-texture_hover = ExtResource("4_bkrji")
+texture_normal = ExtResource("3_am225")
+texture_pressed = ExtResource("4_5tkef")
+texture_hover = ExtResource("4_5tkef")
 
-[node name="SoundVolumes" parent="PopupPanel/VBoxContainer" instance=ExtResource("5_1rc7t")]
+[node name="SoundVolumes" parent="PopupPanel/VBoxContainer" instance=ExtResource("5_h4bul")]
 unique_name_in_owner = true
 layout_mode = 2
 

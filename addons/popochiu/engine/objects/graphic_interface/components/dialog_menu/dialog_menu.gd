@@ -1,3 +1,4 @@
+class_name PopochiuDialogMenu
 extends Container
 @warning_ignore("return_value_discarded")
 @warning_ignore("unused_signal")
@@ -5,24 +6,30 @@ extends Container
 signal shown
 
 @export var option_scene: PackedScene
-@export var default: Color = Color('5B6EE1')
-@export var used: Color = Color('3F3F74')
-@export var hover: Color = Color.WHITE
+## Max height of the menu in pixels. If visible options make the menu to exceed this value, it will
+## enable a vertical scroll bar.
+@export var max_height := 49
+@export var menu_background_color: Color = Color.BLACK
+@export_category("Option buttons")
+@export var normal_font_color: Color = Color("706deb")
+@export var normal_used_font_color: Color = Color("2e2c9b")
+@export var hover_font_color: Color = Color("ffffff")
+@export var hover_used_font_color: Color = Color("b2b2b2")
+@export var pressed_font_color: Color = Color("a9ff9f")
+@export var pressed_used_font_color: Color = Color("56ac4d")
 
 var current_options := []
-
-var _max_height := 0.0
-var _visible_options := 0
 
 @onready var dialog_options_container: VBoxContainer = %DialogOptionsContainer
 
 
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ GODOT ░░░░
+#region Godot ######################################################################################
 func _ready() -> void:
 	for child in dialog_options_container.get_children():
 		child.queue_free()
 	
 	custom_minimum_size = Vector2.ZERO
+	(get_theme_stylebox("panel") as StyleBoxFlat).bg_color = menu_background_color
 	
 	# Connect to own signals
 	gui_input.connect(_clicked)
@@ -35,12 +42,12 @@ func _ready() -> void:
 	hide()
 
 
-# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PRIVATE ░░░░
+#endregion
+
+#region Private ####################################################################################
 func _clicked(event: InputEvent) -> void:
-	var mouse_event: = event as InputEventMouseButton
-	if mouse_event and mouse_event.button_index == MOUSE_BUTTON_LEFT \
-		and mouse_event.pressed:
-			pass
+	if PopochiuUtils.get_click_or_touch_index(event) == MOUSE_BUTTON_LEFT:
+		pass
 
 
 # Creates an Array of PopochiuDialogOption to show dialog tree options created
@@ -65,45 +72,47 @@ func _create_options(options := [], autoshow := false) -> void:
 		if not current_options.is_empty():
 			show_options()
 		return
-
-	current_options = options.duplicate(true)
-
-	for opt in options:
-		var btn: Button = option_scene.instantiate() as Button
-		var dialog_option: PopochiuDialogOption = opt
-
-		btn.text = dialog_option.text
-		btn.add_theme_color_override('font_color', default)
-		btn.add_theme_color_override('font_hover_color', hover)
-		
-		if dialog_option.used and not dialog_option.always_on:
-			btn.add_theme_color_override('font_color', used)
-		
-		btn.pressed.connect(_on_option_clicked.bind(dialog_option))
-
-		dialog_options_container.add_child(btn)
-
-		if dialog_option.disabled or not dialog_option.visible:
-			btn.hide()
-		else:
-			btn.show()
-			_visible_options += 1
-		
-		
-		if _max_height == 0.0:
-			_max_height = btn.size.y * E.settings.max_dialog_options
-			_max_height += E.settings.max_dialog_options - 1
-
-	if autoshow: show_options()
 	
-	await get_tree().process_frame
-
-	custom_minimum_size.y = min(dialog_options_container.size.y, _max_height)
+	current_options = options.duplicate(true)
+	
+	for dialog_option: PopochiuDialogOption in options:
+		var dialog_menu_option := option_scene.instantiate()
+		dialog_menu_option.normal_color = normal_font_color
+		dialog_menu_option.normal_used_color = normal_used_font_color
+		dialog_menu_option.hover_color = hover_font_color
+		dialog_menu_option.hover_used_color = hover_used_font_color
+		dialog_menu_option.pressed_color = pressed_font_color
+		dialog_menu_option.pressed_used_color = pressed_used_font_color
+		dialog_options_container.add_child(dialog_menu_option)
+		
+		dialog_menu_option.option = dialog_option
+		dialog_menu_option.pressed.connect(_on_option_clicked)
+		
+		if dialog_option.disabled or not dialog_option.visible:
+			dialog_menu_option.hide()
+		else:
+			dialog_menu_option.show()
+	
+	if autoshow: show_options()
+	await get_tree().create_timer(0.1).timeout
+	
+	# Fix: Height and position of the dialog menu was wrong when changing the amount of options to
+	# show.
+	var options_height := 0
+	var visible_options := 0
+	for opt in dialog_options_container.get_children():
+		if not opt.visible: continue
+		
+		options_height += opt.size.y
+		visible_options += 1
+	
+	options_height += dialog_options_container.get_theme_constant("separation") * (visible_options - 1)
+	
+	size.y = min(options_height, max_height)
+	position.y = E.height - size.y
 
 
 func remove_options(_dialog: PopochiuDialog = null) -> void:
-	_visible_options = 0
-	
 	if not current_options.is_empty():
 		current_options.clear()
 
@@ -112,13 +121,13 @@ func remove_options(_dialog: PopochiuDialog = null) -> void:
 	
 	await get_tree().process_frame
 	
-	#custom_minimum_size.y = 0
 	size.y = 0
 	dialog_options_container.size.y = 0
 
 
 func show_options() -> void:
 	G.block()
+	G.dialog_options_shown.emit()
 	
 	show()
 	shown.emit()
@@ -129,3 +138,6 @@ func _on_option_clicked(opt: PopochiuDialogOption) -> void:
 	
 	hide()
 	D.option_selected.emit(opt)
+
+
+#endregion

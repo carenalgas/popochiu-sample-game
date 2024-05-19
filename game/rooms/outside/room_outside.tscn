@@ -73,4 +73,3 @@ interaction_polygon = PackedVector2Array(-17, -19, -1, -25, 16, -17, 16, 30, -21
 
 [node name="CharacterGoddiu *" parent="Characters" instance=ExtResource("7_b3ebw")]
 position = Vector2(313, 135)
-interaction_polygon = PackedVector2Array()

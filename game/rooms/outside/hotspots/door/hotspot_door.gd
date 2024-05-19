@@ -23,7 +23,7 @@ func _on_right_click() -> void:
 
 
 # When the node is clicked and there is an inventory item selected
-func _on_item_used(item: PopochiuInventoryItem) -> void:
+func _on_item_used(_item: PopochiuInventoryItem) -> void:
 	# Replace the call to E.command_fallback() with your code.
 	# E.g. Make the player-controlled character to react when using a specific
 	# item on this Hotspot:

@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b053qaym6tlit"]
+[gd_scene load_steps=5 format=3 uid="uid://bbvx67138kyd1"]
 
-[ext_resource type="Theme" uid="uid://dpequqav4rjaf" path="" id="1_0ckms"]
-[ext_resource type="Script" path="res://game/graphic_interface/components/dialog_menu/dialog_menu.gd" id="2_2l0k1"]
-[ext_resource type="PackedScene" uid="uid://buse2mt1vmvcq" path="res://game/graphic_interface/components/dialog_menu/dialog_menu_option.tscn" id="3_t0nqc"]
+[ext_resource type="Theme" uid="uid://dpequqav4rjaf" path="" id="1_4w2le"]
+[ext_resource type="Script" path="res://game/graphic_interface/components/dialog_menu/dialog_menu.gd" id="2_evtkr"]
+[ext_resource type="PackedScene" uid="uid://brn2k16rw3ubq" path="res://game/graphic_interface/components/dialog_menu/dialog_menu_option/dialog_menu_option.tscn" id="3_a04ff"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2awe"]
-bg_color = Color(0, 0, 0.6, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [node name="DialogMenu" type="PanelContainer" groups=["popochiu_gui_component"]]
 custom_minimum_size = Vector2(0, 53)
@@ -15,11 +15,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("1_0ckms")
+theme = ExtResource("1_4w2le")
 theme_override_styles/panel = SubResource("StyleBoxFlat_b2awe")
-script = ExtResource("2_2l0k1")
-option_scene = ExtResource("3_t0nqc")
-used = Color(0.698039, 0.698039, 0.698039, 1)
+script = ExtResource("2_evtkr")
+option_scene = ExtResource("3_a04ff")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 2
@@ -31,15 +30,3 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
 theme_override_constants/separation = 1
-
-[node name="DialogOption" parent="ScrollContainer/DialogOptionsContainer" instance=ExtResource("3_t0nqc")]
-layout_mode = 2
-text = "Option 1"
-
-[node name="DialogOption2" parent="ScrollContainer/DialogOptionsContainer" instance=ExtResource("3_t0nqc")]
-layout_mode = 2
-text = "Option 2"
-
-[node name="DialogOption3" parent="ScrollContainer/DialogOptionsContainer" instance=ExtResource("3_t0nqc")]
-layout_mode = 2
-text = "Option 3"

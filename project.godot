@@ -53,6 +53,10 @@ popochiu-look={
 ]
 }
 
+[popochiu]
+
+pixel/pixel_art_textures=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
