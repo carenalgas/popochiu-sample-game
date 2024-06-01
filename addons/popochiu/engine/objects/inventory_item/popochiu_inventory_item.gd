@@ -343,6 +343,12 @@ func _on_gui_input(event: InputEvent) -> void:
 	if not PopochiuUtils.is_click_or_touch_pressed(event): return
 	
 	var event_index := PopochiuUtils.get_click_or_touch_index(event)
+	
+	# Fix #224 Clean E.clicked when an inventory item is clicked to ensure that the event is not
+	# mishandled by the GUI
+	if E.clicked:
+		E.clicked = null
+	
 	I.clicked = self
 	last_click_button = event_index
 	

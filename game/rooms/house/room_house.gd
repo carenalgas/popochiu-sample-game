@@ -21,8 +21,8 @@ func _on_room_entered() -> void:
 # is visible.
 func _on_room_transition_finished() -> void:
 	if state.visited_first_time:
-		await C.Goddiu.say("[wave]¡¡Holaaaa!![/wave]")
-		await C.Popsy.say("[rainbow]Holaaaaaaaaaa[/rainbow]")
+		await C.Goddiu.say("[wave]¡¡Hiiiii!![/wave]")
+		await C.Popsy.say("[rainbow]Hiiiiiiiiiiiiiiiii[/rainbow]")
 
 
 # What happens before Popochiu unloads the room.

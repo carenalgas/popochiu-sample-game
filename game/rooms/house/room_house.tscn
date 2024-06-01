@@ -15,10 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://bil27y44847wc" path="res://game/characters/popsy/character_popsy.tscn" id="12_yd7us"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kuj1q"]
-vertices = PackedVector2Array(125, 28, 49, 40, -16, 40, -135, 31, -122, 0, 80, -7)
+vertices = PackedVector2Array(149, 35, 51, 50, -17, 50, -150, 40, -129, -10, 84, -18)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-129, -10, 84, -18, 149, 35, 51, 50, -17, 50, -150, 40)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
 
 [node name="RoomHouse" type="Node2D"]
 script = ExtResource("1_qtcms")
@@ -70,6 +71,7 @@ polygon = PackedVector2Array(-11, 21, -11, -14, 8, -29, 28, -17, 30, 23)
 [node name="ToyCar" parent="Props" instance=ExtResource("10_hcj88")]
 position = Vector2(81, 110)
 texture = ExtResource("11_54r3c")
+walk_to_point = Vector2(21, -5)
 interaction_polygon = PackedVector2Array(-7, -7, 7, -6, 11, 6, -10, 6)
 
 [node name="Hotspots" type="Node2D" parent="."]

@@ -12,10 +12,11 @@
 [ext_resource type="Script" path="res://game/rooms/outside/hotspots/door/hotspot_door.gd" id="11_10688"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ow5ee"]
-vertices = PackedVector2Array(36, 7, 202, 62, 200, 70, -19, 22, -38, 9, -33, 47, -202, 69, -74, 51, -107, 36, -197, 27, -122, 6, -79, 7)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 3, 2), PackedInt32Array(5, 2, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 0), PackedInt32Array(4, 11, 0)])
+vertices = PackedVector2Array(36, -3, 214, 56, 209, 81, -32, 25, -41, 19, -39, 38, -214, 79, -72, 41, -90, 33, -207, 19, -125, -4, -75, 17)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 3, 2), PackedInt32Array(5, 2, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(8, 9, 10, 11), PackedInt32Array(11, 10, 0, 4)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-207, 19, -125, -4, 36, -3, 214, 56, 209, 81, -214, 79), PackedVector2Array(-41, 19, -75, 17, -90, 33, -72, 41, -39, 38, -32, 25)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 0.0
 
 [node name="RoomOutside" type="Node2D"]
 script = ExtResource("1_1vr1w")
