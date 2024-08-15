@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_12"
+type="Resource"
+uid="uid://bjtd0ixyqqjfp"
+path="res://.godot/imported/popsy_talk.dialogue-5c5ef9059e137febd53ada8f7102a387.tres"
+
+[deps]
+
+source_file="res://game/dialogs/popsy_talk/popsy_talk.dialogue"
+dest_files=["res://.godot/imported/popsy_talk.dialogue-5c5ef9059e137febd53ada8f7102a387.tres"]
+
+[params]
+
+defaults=true

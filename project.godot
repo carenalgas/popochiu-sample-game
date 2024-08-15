@@ -54,6 +54,10 @@ popochiu-look={
 ]
 }
 
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://game/dialogs/popsy_talk/popsy_talk.dialogue")
+
 [popochiu]
 
 pixel/pixel_art_textures=true
