@@ -27,6 +27,7 @@ I="*res://game/autoloads/i.gd"
 D="*res://game/autoloads/d.gd"
 A="*res://game/autoloads/a.gd"
 G="*res://addons/popochiu/engine/interfaces/i_graphic_interface.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
@@ -38,7 +39,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/popochiu/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/popochiu/plugin.cfg")
 
 [input]
 
