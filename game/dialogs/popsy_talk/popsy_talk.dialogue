@@ -10,7 +10,7 @@ Popsy: Oaaaaaaaa
 ~ wassup
 
 Popsy: I'm saaaaaaad
-- ¿Qué quieres comer? =>< dinner
+- ¿Qué quieres comer? => dinner
 - Hablamos! => stop
 
 
@@ -19,6 +19,7 @@ Popsy: I'm saaaaaaad
 do D.say_selected()
 do E.camera_shake_bg()
 Popsy: I WANNA AN APPLE!!!
+=> wassup
 
 
 ~ stop
