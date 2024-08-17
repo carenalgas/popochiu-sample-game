@@ -3,13 +3,14 @@
 do C.player.face_clicked()
 Player: Hiiiiiiii
 Popsy: Oaaaaaaaa
-- ¿Cómo estás? => wassup
+- ¿Cómo estás?
+	Popsy: I'm saaaaaaad
+	=> wassup
 - Hablamos! => stop
 
 
 ~ wassup
 
-Popsy: I'm saaaaaaad
 - ¿Qué quieres comer? => dinner
 - Hablamos! => stop
 
