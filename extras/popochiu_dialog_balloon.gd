@@ -64,10 +64,9 @@ func _say_emotional(character: PopochiuCharacter, dialogue_line: DialogueLine) -
 func _sync_options_with_responses(responses: Array[DialogueResponse]) -> void:
 	var response_ids = responses.map(func (r): return r.id)
 	
-	for opt: PopochiuDialogOption in options:
+	for opt: PopochiuDialogBalloonOption in options:
 		if opt.id in response_ids:
-			if not opt.visible:
-				opt.turn_on()
+			opt.make_visible()
 		else:
 			opt.turn_off()
 
