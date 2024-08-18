@@ -1,5 +1,4 @@
 ~ popsy_talk
-
 do C.player.face_clicked()
 Player: Hiiiiiiii
 Popsy: Oaaaaaaaa
@@ -8,23 +7,17 @@ Popsy: Oaaaaaaaa
 	=> wassup
 - Hablamos! => stop
 
-
 ~ wassup
-
 - ¿Qué quieres comer? => dinner
 - Hablamos! => stop
 
-
 ~ dinner
-
 do D.say_selected()
 do E.camera_shake_bg()
 Popsy: I WANNA AN APPLE!!!
 => wassup
 
-
 ~ stop
-
 Player: Bye
 Popsy: Bye bye!
 
