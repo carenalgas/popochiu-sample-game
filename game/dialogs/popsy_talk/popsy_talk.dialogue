@@ -4,7 +4,7 @@ do C.player.face_clicked()
 Player: Hiiiiiiii
 Popsy: Oaaaaaaaa
 - ¿Cómo estás?
-	Popsy: I'm saaaaaaad
+	Popsy: [#emo=sad] I'm saaaaaaad
 	=> wassup
 - Hablamos! => stop
 

@@ -3,6 +3,7 @@ extends PopochiuDialog
 
 
 const PLAYER_CHARACTER_NAME = "player"
+const EMOTION_TAG_NAME = "emo"
 
 @export var dialogue_resource: DialogueResource
 @export var start_title := ""
@@ -36,12 +37,12 @@ func _process_next(title: String) -> void:
 
 
 func _process_dialogue_line(dialogue_line: DialogueLine) -> void:
-	var character = _get_speaking_character(dialogue_line.character)
+	var character := _get_speaking_character(dialogue_line.character)
 	if character == null:
 		PopochiuUtils.print_error("Dialogue line character not found " + dialogue_line.character)
 		return
 	
-	await character.say(dialogue_line.text)
+	await _say_emotional(character, dialogue_line)
 	
 	if dialogue_line.responses.is_empty():
 		await _process_next(dialogue_line.next_id)
@@ -53,6 +54,11 @@ func _process_dialogue_line(dialogue_line: DialogueLine) -> void:
 func _get_speaking_character(character_name: String) -> PopochiuCharacter:
 	var is_player = character_name.to_lower() == PLAYER_CHARACTER_NAME
 	return C.player if is_player else C.get_runtime_character(character_name)
+
+
+func _say_emotional(character: PopochiuCharacter, dialogue_line: DialogueLine) -> void:
+	var emo := dialogue_line.get_tag_value(EMOTION_TAG_NAME)
+	await character.say(dialogue_line.text, emo)
 
 
 func _sync_options_with_responses(responses: Array[DialogueResponse]) -> void:
