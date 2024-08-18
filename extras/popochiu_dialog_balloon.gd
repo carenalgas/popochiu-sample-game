@@ -51,8 +51,8 @@ func _process_dialogue_line(dialogue_line: DialogueLine) -> void:
 
 
 func _get_speaking_character(character_name: String) -> PopochiuCharacter:
-	var is_player_speaking = character_name.to_lower() == PLAYER_CHARACTER_NAME
-	return C.player if is_player_speaking else C.get_runtime_character(character_name)
+	var is_player = character_name.to_lower() == PLAYER_CHARACTER_NAME
+	return C.player if is_player else C.get_runtime_character(character_name)
 
 
 func _sync_options_with_responses(responses: Array[DialogueResponse]) -> void:
