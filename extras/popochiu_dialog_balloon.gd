@@ -7,6 +7,8 @@ const PLAYER_CHARACTER_NAME = "player"
 @export var dialogue_resource: DialogueResource
 @export var start_title := ""
 
+var _option_ids: Array[String] = []
+
 
 #region Virtual ####################################################################################
 func _on_start() -> void:
@@ -41,17 +43,11 @@ func _process_dialogue_line(dialogue_line: DialogueLine) -> void:
 	
 	await character.say(dialogue_line.text)
 	
-	_turn_off_all_options()
 	if dialogue_line.responses.is_empty():
 		await _process_next(dialogue_line.next_id)
 	else:
-		for response: DialogueResponse in dialogue_line.responses:
-			var opt = get_option(response.id)
-			if opt == null:
-				var new_opt := _option_from_response(response)
-				options.push_back(new_opt)
-			else:
-				opt.turn_on()
+		_sync_options_with_responses(dialogue_line.responses)
+		_add_responses_not_in_options(dialogue_line.responses)
 
 
 func _get_speaking_character(character_name: String) -> PopochiuCharacter:
@@ -59,9 +55,22 @@ func _get_speaking_character(character_name: String) -> PopochiuCharacter:
 	return C.player if is_player_speaking else C.get_runtime_character(character_name)
 
 
-func _turn_off_all_options() -> void:
+func _sync_options_with_responses(responses: Array[DialogueResponse]) -> void:
+	var response_ids = responses.map(func (r): return r.id)
+	
 	for opt: PopochiuDialogOption in options:
-		opt.turn_off()
+		if opt.id in response_ids:
+			if not opt.visible:
+				opt.turn_on()
+		else:
+			opt.turn_off()
+
+
+func _add_responses_not_in_options(responses: Array[DialogueResponse]) -> void:
+	for response: DialogueResponse in responses.filter(func(r): return r.id not in _option_ids):
+		var new_opt := _option_from_response(response)
+		options.append(new_opt)
+		_option_ids.append(new_opt.id)
 
 
 func _option_from_response(response: DialogueResponse) -> PopochiuDialogBalloonOption:
