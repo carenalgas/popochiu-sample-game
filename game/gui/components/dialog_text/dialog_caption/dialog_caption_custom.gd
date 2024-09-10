@@ -1,0 +1,1 @@
+extends "dialog_caption.gd"

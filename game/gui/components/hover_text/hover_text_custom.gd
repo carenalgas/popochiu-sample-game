@@ -1,0 +1,1 @@
+extends "hover_text.gd"

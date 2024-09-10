@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://ccschgo02th6u"]
+
+[ext_resource type="Script" path="res://game/rooms/outside/hotspots/bushes/hotspot_bushes.gd" id="1_f1qlw"]
+
+[node name="Bushes" type="Area2D"]
+script = ExtResource("1_f1qlw")
+script_name = "Bushes"
+description = "Bushes"
+cursor = 1
+interaction_polygon = PackedVector2Array()
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)

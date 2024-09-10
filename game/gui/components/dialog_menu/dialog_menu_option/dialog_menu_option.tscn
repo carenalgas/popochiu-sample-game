@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwpk5b2py5mmn"]
+
+[ext_resource type="Theme" uid="uid://bdjtkaioq2hln" path="res://game/gui/resources/gui_theme.tres" id="1_wr0kb"]
+[ext_resource type="Script" path="res://game/gui/components/dialog_menu/dialog_menu_option/dialog_menu_option_custom.gd" id="2_hiqm3"]
+[ext_resource type="FontFile" uid="uid://dehibxhw6ghki" path="res://game/gui/fonts/monkeyisland_1991.ttf" id="3_j3atq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_un1pr"]
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_we03b"]
+
+[node name="DialogMenuOption" type="PanelContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 24.0
+grow_horizontal = 2
+mouse_filter = 2
+theme = ExtResource("1_wr0kb")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_un1pr")
+script = ExtResource("2_hiqm3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "A [wave]veeeeeeeeeeeeeery[/wave] long line option that should wrap so devs can have long options......"
+fit_content = true
+scroll_active = false
+
+[node name="Handler" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_j3atq")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_we03b")
+flat = true
+alignment = 0
+text_overrun_behavior = 4

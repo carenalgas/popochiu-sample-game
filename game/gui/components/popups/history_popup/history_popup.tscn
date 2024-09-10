@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://ducy0fs3p3gdn"]
+
+[ext_resource type="Theme" uid="uid://bdjtkaioq2hln" path="res://game/gui/resources/gui_theme.tres" id="1_mfl03"]
+[ext_resource type="Script" path="res://game/gui/components/popups/history_popup/history_popup_custom.gd" id="2_3ejae"]
+[ext_resource type="PackedScene" uid="uid://bo58ggs52b8bg" path="res://game/gui/components/popups/history_popup/components/dialog_line.tscn" id="3_txo7c"]
+[ext_resource type="PackedScene" uid="uid://bhsxykocm4sxl" path="res://game/gui/components/popups/history_popup/components/interaction_line.tscn" id="4_yihnp"]
+[ext_resource type="StyleBox" uid="uid://b4amhsghrgr1o" path="res://game/gui/components/popups/popochiu_popup_panel_container.tres" id="5_qcglt"]
+[ext_resource type="Texture2D" uid="uid://bjdox7w0fubno" path="res://game/gui/resources/images/close.png" id="6_17gvc"]
+[ext_resource type="Texture2D" uid="uid://c2ab5npqqu1qh" path="res://game/gui/resources/images/close_highlight.png" id="7_7wdnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xipc1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pm06l"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gr6a3"]
+bg_color = Color(0.768627, 0.423529, 0.443137, 1)
+border_width_left = 8
+border_color = Color(0.388235, 0.607843, 1, 1)
+
+[sub_resource type="Theme" id="Theme_cqgnt"]
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_pm06l")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_pm06l")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_pm06l")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_gr6a3")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_gr6a3")
+
+[node name="HistoryPopup" type="Control" groups=["popochiu_gui_popup"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mfl03")
+script = ExtResource("2_3ejae")
+dialog_line = ExtResource("3_txo7c")
+interaction_line = ExtResource("4_yihnp")
+script_name = &"HistoryPopup"
+title = "History"
+
+[node name="Overlay" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_xipc1")
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay"]
+custom_minimum_size = Vector2(256, 144)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = ExtResource("5_qcglt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelContainer"]
+layout_mode = 2
+
+[node name="HeaderContainer" type="HBoxContainer" parent="Overlay/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Overlay/PanelContainer/VBoxContainer/HeaderContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "History"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Close" type="TextureButton" parent="Overlay/PanelContainer/VBoxContainer/HeaderContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("6_17gvc")
+texture_pressed = ExtResource("7_7wdnf")
+texture_hover = ExtResource("7_7wdnf")
+
+[node name="Empty" type="Label" parent="Overlay/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Nothing to show yet"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LinesScroll" type="ScrollContainer" parent="Overlay/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_cqgnt")
+
+[node name="LinesList" type="VBoxContainer" parent="Overlay/PanelContainer/VBoxContainer/LinesScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FooterContainer" type="HBoxContainer" parent="Overlay/PanelContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 10
+alignment = 1
+
+[node name="Ok" type="Button" parent="Overlay/PanelContainer/VBoxContainer/FooterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "ok"
+
+[node name="Cancel" type="Button" parent="Overlay/PanelContainer/VBoxContainer/FooterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "cancel"

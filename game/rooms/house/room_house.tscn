@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://6pn1f5v8sgdl"]
+
+[ext_resource type="Script" path="res://game/rooms/house/room_house.gd" id="1_vfqss"]
+[ext_resource type="PackedScene" uid="uid://don3tfhlv077d" path="res://game/rooms/house/walkable_areas/floor/walkable_area_floor.tscn" id="2_7susk"]
+[ext_resource type="PackedScene" uid="uid://34u8frckti3t" path="res://game/rooms/house/props/background/prop_background.tscn" id="2_s3gfn"]
+[ext_resource type="PackedScene" uid="uid://dx6f3acdo8ibe" path="res://game/rooms/house/props/door/prop_door.tscn" id="3_tqtm2"]
+[ext_resource type="PackedScene" uid="uid://be5ep0mj6yhax" path="res://game/rooms/house/props/drawer/prop_drawer.tscn" id="4_63et0"]
+[ext_resource type="PackedScene" uid="uid://gningnsxp3tm" path="res://game/rooms/house/props/table/prop_table.tscn" id="5_lf33p"]
+[ext_resource type="PackedScene" uid="uid://dl1t4opetmpcd" path="res://game/rooms/house/props/toy_car/prop_toy_car.tscn" id="6_ccl4h"]
+[ext_resource type="PackedScene" uid="uid://deygolo3scdfs" path="res://game/rooms/house/hotspots/window/hotspot_window.tscn" id="8_fbfo6"]
+[ext_resource type="PackedScene" uid="uid://maaovjqnhr4o" path="res://game/characters/popsy/character_popsy.tscn" id="9_ykiua"]
+
+[node name="RoomHouse" type="Node2D"]
+script = ExtResource("1_vfqss")
+script_name = "House"
+width = 356
+height = 200
+popochiu_placeholder = null
+metadata/_popochiu_aseprite_config_ = {
+"o_folder": "",
+"o_name": "",
+"only_visible_layers": true,
+"op_exp": true,
+"source": "/home/paolo/Hobbies/Carenalgas/popochiu-sample-resource-pack/sample-game/aseprite/house.aseprite",
+"tags": [{
+"direction": "forward",
+"from": 0,
+"import": true,
+"loops": false,
+"prop_clickable": false,
+"prop_visible": true,
+"tag_name": "background",
+"to": 1.0
+}, {
+"direction": "forward",
+"from": 0,
+"import": true,
+"loops": false,
+"prop_clickable": true,
+"prop_visible": true,
+"tag_name": "door",
+"to": 2.0
+}, {
+"direction": "forward",
+"from": 0,
+"import": true,
+"loops": false,
+"prop_clickable": true,
+"prop_visible": true,
+"tag_name": "drawer",
+"to": 2.0
+}, {
+"direction": "forward",
+"from": 0,
+"import": true,
+"loops": false,
+"prop_clickable": true,
+"prop_visible": true,
+"tag_name": "table",
+"to": 1.0
+}, {
+"direction": "forward",
+"from": 0,
+"import": true,
+"loops": false,
+"prop_clickable": true,
+"prop_visible": true,
+"tag_name": "toy_car",
+"to": 1.0
+}],
+"wipe_old_anims": true
+}
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Floor" parent="WalkableAreas" instance=ExtResource("2_7susk")]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Background" parent="Props" instance=ExtResource("2_s3gfn")]
+
+[node name="Door" parent="Props" instance=ExtResource("3_tqtm2")]
+baseline = -30
+walk_to_point = Vector2(-80.6351, -17.6389)
+interaction_polygon = PackedVector2Array(-101, -72, -84, -82, -64, -69, -64, -28, -102, -27)
+
+[node name="Drawer" parent="Props" instance=ExtResource("4_63et0")]
+baseline = -6
+walk_to_point = Vector2(-98.274, -7.87451)
+interaction_polygon = PackedVector2Array(-151, -26, -139, -36, -123, -31, -125, 3, -150, 3)
+
+[node name="Table" parent="Props" instance=ExtResource("5_lf33p")]
+baseline = 3
+interaction_polygon = PackedVector2Array(-53, -13, -34, -20, -16, -13, -16, 11, -55, 11)
+
+[node name="ToyCar" parent="Props" instance=ExtResource("6_ccl4h")]
+baseline = 17
+walk_to_point = Vector2(-72.1306, 7.87451)
+interaction_polygon = PackedVector2Array(-98, 10, -82, 11, -78, 22, -104, 22)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Window" parent="Hotspots" instance=ExtResource("8_fbfo6")]
+position = Vector2(178, 100)
+baseline = -100
+walk_to_point = Vector2(-20.4738, -23.3086)
+interaction_polygon = PackedVector2Array(-44, -91, -21, -99, 1, -91, 5, -75, 1, -55, -23, -49, -44, -54, -49, -74)
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="CharacterPopsy *" parent="Characters" instance=ExtResource("9_ykiua")]
+position = Vector2(249, 106)
+walk_to_point = Vector2(-53.2318, -8.50449)

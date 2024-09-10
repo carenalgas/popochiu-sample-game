@@ -1,0 +1,1 @@
+extends "btn_quit.gd"

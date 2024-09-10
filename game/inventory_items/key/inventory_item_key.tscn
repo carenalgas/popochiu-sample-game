@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ygvg8j0yu0y7"]
+
+[ext_resource type="Texture2D" uid="uid://i16clg73qyjx" path="res://game/inventory_items/key/key.png" id="1_jj6ec"]
+[ext_resource type="Script" path="res://game/inventory_items/key/inventory_item_key.gd" id="1_qo0ea"]
+
+[node name="ItemKey" type="TextureRect"]
+texture_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("1_jj6ec")
+stretch_mode = 5
+script = ExtResource("1_qo0ea")
+script_name = "Key"
+description = "Key"

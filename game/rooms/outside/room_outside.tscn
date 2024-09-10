@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://bu4tb36dhwdsa"]
+
+[ext_resource type="Script" path="res://game/rooms/outside/room_outside.gd" id="1_jpjo6"]
+[ext_resource type="PackedScene" uid="uid://dn1w5www2h22w" path="res://game/rooms/outside/props/bg/prop_bg.tscn" id="2_cpu42"]
+[ext_resource type="PackedScene" uid="uid://cx3b02j51ltxl" path="res://game/rooms/outside/walkable_areas/meadow/walkable_area_meadow.tscn" id="2_suted"]
+[ext_resource type="PackedScene" uid="uid://188ryqclpr3q" path="res://game/rooms/outside/props/house/prop_house.tscn" id="3_yclh5"]
+[ext_resource type="PackedScene" uid="uid://koq5oebhw727" path="res://game/rooms/outside/props/tree/prop_tree.tscn" id="4_3bw4q"]
+[ext_resource type="PackedScene" uid="uid://6cgdnx0lskk0" path="res://game/rooms/outside/hotspots/door/hotspot_door.tscn" id="5_s3q2d"]
+[ext_resource type="PackedScene" uid="uid://ccschgo02th6u" path="res://game/rooms/outside/hotspots/bushes/hotspot_bushes.tscn" id="6_a8ptq"]
+[ext_resource type="PackedScene" uid="uid://dutyqb10pc7mx" path="res://game/rooms/outside/markers/enter_pos/marker_enter_pos.tscn" id="8_jdih4"]
+
+[node name="RoomOutside" type="Node2D"]
+script = ExtResource("1_jpjo6")
+script_name = "Outside"
+width = 356
+height = 200
+popochiu_placeholder = null
+metadata/_popochiu_aseprite_config_ = {
+"o_folder": "",
+"o_name": "",
+"only_visible_layers": true,
+"op_exp": true,
+"source": "/home/paolo/Hobbies/Carenalgas/popochiu-sample-resource-pack/sample-game/aseprite/outside.aseprite",
+"tags": [{
+"direction": "forward",
+"from": 0,
+"import": true,
+"loops": false,
+"prop_clickable": false,
+"prop_visible": true,
+"tag_name": "bg",
+"to": 1.0
+}, {
+"direction": "forward",
+"from": 0,
+"import": true,
+"loops": false,
+"prop_clickable": false,
+"prop_visible": true,
+"tag_name": "house",
+"to": 1.0
+}, {
+"direction": "forward",
+"from": 0,
+"import": true,
+"loops": false,
+"prop_clickable": true,
+"prop_visible": true,
+"tag_name": "tree",
+"to": 2.0
+}, {
+"import": false,
+"loops": false,
+"prop_clickable": false,
+"prop_visible": true,
+"tag_name": "container"
+}, {
+"import": false,
+"loops": false,
+"prop_clickable": false,
+"prop_visible": true,
+"tag_name": "hook"
+}],
+"wipe_old_anims": true
+}
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Meadow" parent="WalkableAreas" instance=ExtResource("2_suted")]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Bg" parent="Props" instance=ExtResource("2_cpu42")]
+
+[node name="House" parent="Props" instance=ExtResource("3_yclh5")]
+
+[node name="Tree" parent="Props" instance=ExtResource("4_3bw4q")]
+baseline = 26
+walk_to_point = Vector2(-112.557, 20.7653)
+interaction_polygon = PackedVector2Array(-184, -26, -190, -52, -178, -77, -148, -84, -126, -72, -117, -54, -120, -35, -140, -24, -137, 33, -160, 33, -160, -22)
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Door" parent="Hotspots" instance=ExtResource("5_s3q2d")]
+position = Vector2(178, 100)
+baseline = 14
+walk_to_point = Vector2(145.593, 32.0918)
+interaction_polygon = PackedVector2Array(163, -11, 181, -21, 200, -7, 197, 36, 164, 26)
+
+[node name="Bushes" parent="Hotspots" instance=ExtResource("6_a8ptq")]
+position = Vector2(178, 100)
+baseline = 5
+walk_to_point = Vector2(2.35968, -4.95533)
+interaction_polygon = PackedVector2Array(-93, -30, -67, -33, -60, -16, -45, -16, -34, -29, -16, -30, -5, -16, -11, -2, -33, -1, -38, 11, -71, 12, -75, -4, -92, -4, -100, -13)
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="EnterPos" parent="Markers" instance=ExtResource("8_jdih4")]
+position = Vector2(178, 100)
+
+[node name="Characters" type="Node2D" parent="."]

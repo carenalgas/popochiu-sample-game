@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://petkt8gpev54"
-path="res://.godot/imported/icon_v2-sample_project.png-5857fb7f320e779f7165156fb3582327.ctex"
+uid="uid://c2x04y31yca7l"
+path="res://.godot/imported/btn_text.png-2b03ac885bd4d34f360d43541f88a1ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon_v2-sample_project.png"
-dest_files=["res://.godot/imported/icon_v2-sample_project.png-5857fb7f320e779f7165156fb3582327.ctex"]
+source_file="res://game/gui/components/settings_bar/images/btn_text.png"
+dest_files=["res://.godot/imported/btn_text.png-2b03ac885bd4d34f360d43541f88a1ed.ctex"]
 
 [params]
 

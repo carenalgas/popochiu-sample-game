@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://deygolo3scdfs"]
+
+[ext_resource type="Script" path="res://game/rooms/house/hotspots/window/hotspot_window.gd" id="1_ahr2h"]
+
+[node name="Window" type="Area2D"]
+script = ExtResource("1_ahr2h")
+script_name = "Window"
+description = "Window"
+cursor = 1
+interaction_polygon = PackedVector2Array()
+
+[node name="InteractionPolygon" type="CollisionPolygon2D" parent="."]
+visible = false
+modulate = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)

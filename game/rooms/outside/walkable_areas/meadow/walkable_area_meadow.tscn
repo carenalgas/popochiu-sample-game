@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx3b02j51ltxl"]
+
+[ext_resource type="Script" path="res://game/rooms/outside/walkable_areas/meadow/walkable_area_meadow.gd" id="1_tbd04"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ww5wn"]
+vertices = PackedVector2Array(111, -4, 123, 18, -140, 38, -131, 26, 26, -8, -115, -14, -1, -14, -138, 16, -165, 0, -162, 16, -194, 10, -171, 27, -212, 76, -212, 11, 216, 46, 216, 76, -161, 38)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 4, 3, 7), PackedInt32Array(8, 5, 7, 9, 10), PackedInt32Array(10, 9, 11, 12, 13), PackedInt32Array(1, 14, 15, 12, 2), PackedInt32Array(12, 11, 16), PackedInt32Array(12, 16, 2)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-212, 11, -194, 10, -165, 0, -115, -14, -1, -14, 26, -8, 111, -4, 123, 18, 216, 46, 216, 76, -212, 76), PackedVector2Array(-162, 16, -171, 27, -161, 38, -140, 38, -131, 26, -138, 16)])
+agent_radius = 0.0
+
+[node name="Meadow" type="Node2D"]
+position = Vector2(178, 100)
+script = ExtResource("1_tbd04")
+script_name = "Meadow"
+description = "Meadow"
+interaction_polygon = [PackedVector2Array(-212, 11, -194, 10, -165, 0, -115, -14, -1, -14, 26, -8, 111, -4, 123, 18, 216, 46, 216, 76, -212, 76), PackedVector2Array(-162, 16, -171, 27, -161, 38, -140, 38, -131, 26, -138, 16)]
+
+[node name="Perimeter" type="NavigationRegion2D" parent="."]
+visible = false
+modulate = Color(0, 1, 0, 1)
+navigation_polygon = SubResource("NavigationPolygon_ww5wn")

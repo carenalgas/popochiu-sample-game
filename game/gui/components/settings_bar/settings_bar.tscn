@@ -1,0 +1,168 @@
+[gd_scene load_steps=30 format=3 uid="uid://lxkfkdoxyiv6"]
+
+[ext_resource type="Theme" uid="uid://bdjtkaioq2hln" path="res://game/gui/resources/gui_theme.tres" id="1_ie3yc"]
+[ext_resource type="Script" path="res://game/gui/components/settings_bar/settings_bar_custom.gd" id="2_ai2d7"]
+[ext_resource type="Texture2D" uid="uid://bdbgl3xnx3mhc" path="res://game/gui/components/settings_bar/images/btn_save.png" id="3_tn0je"]
+[ext_resource type="Script" path="res://game/gui/components/settings_bar/buttons/settings_bar_button_custom.gd" id="4_jg4bx"]
+[ext_resource type="Texture2D" uid="uid://cc7te3b1k4t7g" path="res://game/gui/components/settings_bar/images/btn_load.png" id="5_f67rn"]
+[ext_resource type="Script" path="res://game/gui/components/settings_bar/buttons/btn_load_custom.gd" id="6_mwoaa"]
+[ext_resource type="Texture2D" uid="uid://c2x04y31yca7l" path="res://game/gui/components/settings_bar/images/btn_text.png" id="7_25230"]
+[ext_resource type="Texture2D" uid="uid://j1umbtqlts75" path="res://game/gui/components/settings_bar/images/btn_audio.png" id="8_5jm4i"]
+[ext_resource type="Texture2D" uid="uid://dloxnhjn5jn4x" path="res://game/gui/components/settings_bar/images/btn_dialog_history.png" id="9_ebumk"]
+[ext_resource type="Texture2D" uid="uid://djukq70hmge8i" path="res://game/gui/components/settings_bar/images/btn_quit.png" id="10_pfy3u"]
+[ext_resource type="Script" path="res://game/gui/components/settings_bar/buttons/btn_quit_custom.gd" id="11_ap7to"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnuax"]
+atlas = ExtResource("3_tn0je")
+region = Rect2(0, 0, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcwc6"]
+atlas = ExtResource("3_tn0je")
+region = Rect2(0, 16, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yci17"]
+atlas = ExtResource("3_tn0je")
+region = Rect2(0, 32, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ii6v"]
+atlas = ExtResource("5_f67rn")
+region = Rect2(0, 0, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5e8t"]
+atlas = ExtResource("5_f67rn")
+region = Rect2(0, 16, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtnbp"]
+atlas = ExtResource("5_f67rn")
+region = Rect2(0, 32, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vddc"]
+atlas = ExtResource("7_25230")
+region = Rect2(0, 0, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38kcs"]
+atlas = ExtResource("7_25230")
+region = Rect2(0, 16, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckg43"]
+atlas = ExtResource("7_25230")
+region = Rect2(0, 32, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unaqu"]
+atlas = ExtResource("8_5jm4i")
+region = Rect2(0, 0, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8n60"]
+atlas = ExtResource("8_5jm4i")
+region = Rect2(0, 16, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl1ek"]
+atlas = ExtResource("8_5jm4i")
+region = Rect2(0, 32, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqe4x"]
+atlas = ExtResource("9_ebumk")
+region = Rect2(0, 0, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0y2i"]
+atlas = ExtResource("9_ebumk")
+region = Rect2(0, 16, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrqy"]
+atlas = ExtResource("9_ebumk")
+region = Rect2(0, 32, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sqfr"]
+atlas = ExtResource("10_pfy3u")
+region = Rect2(0, 0, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blkpg"]
+atlas = ExtResource("10_pfy3u")
+region = Rect2(0, 16, 0, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_834us"]
+atlas = ExtResource("10_pfy3u")
+region = Rect2(0, 32, 0, 16)
+
+[node name="SettingsBar" type="Control" groups=["popochiu_gui_component"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_ie3yc")
+script = ExtResource("2_ai2d7")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 24.0
+grow_horizontal = 0
+
+[node name="Box" type="HBoxContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+alignment = 2
+
+[node name="BtnSave" type="TextureButton" parent="PanelContainer/Box"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_mnuax")
+texture_pressed = SubResource("AtlasTexture_gcwc6")
+texture_hover = SubResource("AtlasTexture_yci17")
+script = ExtResource("4_jg4bx")
+description = "Save game"
+script_name = "save"
+
+[node name="BtnLoad" type="TextureButton" parent="PanelContainer/Box"]
+visible = false
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_8ii6v")
+texture_pressed = SubResource("AtlasTexture_c5e8t")
+texture_hover = SubResource("AtlasTexture_dtnbp")
+script = ExtResource("6_mwoaa")
+description = "Load game"
+script_name = "load"
+
+[node name="BtnTextSettings" type="TextureButton" parent="PanelContainer/Box"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_2vddc")
+texture_pressed = SubResource("AtlasTexture_38kcs")
+texture_hover = SubResource("AtlasTexture_ckg43")
+script = ExtResource("4_jg4bx")
+description = "Text settings"
+script_name = "text_settings"
+
+[node name="BtnSoundSettings" type="TextureButton" parent="PanelContainer/Box"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_unaqu")
+texture_pressed = SubResource("AtlasTexture_i8n60")
+texture_hover = SubResource("AtlasTexture_kl1ek")
+script = ExtResource("4_jg4bx")
+description = "Sound settings"
+script_name = "sound_settings"
+
+[node name="BtnHistory" type="TextureButton" parent="PanelContainer/Box"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_vqe4x")
+texture_pressed = SubResource("AtlasTexture_h0y2i")
+texture_hover = SubResource("AtlasTexture_myrqy")
+script = ExtResource("4_jg4bx")
+description = "History"
+script_name = "history"
+
+[node name="BtnQuit" type="TextureButton" parent="PanelContainer/Box"]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_1sqfr")
+texture_pressed = SubResource("AtlasTexture_blkpg")
+texture_hover = SubResource("AtlasTexture_834us")
+script = ExtResource("11_ap7to")
+description = "Quit"
+script_name = "quit"
