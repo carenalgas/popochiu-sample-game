@@ -52,13 +52,15 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not PopochiuUtils.is_click_or_touch_pressed(event) or modulate.a == 0.0:
+	if (
+		not PopochiuUtils.get_click_or_touch_index(event) in [
+			MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT
+		]
+		or modulate.a == 0.0
+	):
 		return
 	
-	get_viewport().set_input_as_handled()
-	
-	if PopochiuUtils.get_click_or_touch_index(event) != MOUSE_BUTTON_LEFT:
-		return
+	accept_event()
 	
 	if visible_ratio == 1.0:
 		disappear()
@@ -70,7 +72,14 @@ func _input(event: InputEvent) -> void:
 
 #region Public #####################################################################################
 func play_text(props: Dictionary) -> void:
-	var msg: String = E.get_text(props.text)
+	var display_text: String = ""
+	
+	if PopochiuConfig.should_talk_gibberish():
+		display_text = D.create_gibberish(E.get_text(props.text))
+	else:
+		display_text = E.get_text(props.text)
+	
+	var msg: String = display_text
 	_is_waiting_input = false
 	_dialog_pos = props.position
 	
@@ -250,7 +259,7 @@ func _show_dialogue(chr: PopochiuCharacter, msg := "") -> void:
 	play_text({
 		text = msg,
 		color = chr.text_color,
-		position = PopochiuUtils.get_screen_coords_for(chr.dialog_pos).floor() / (
+		position = PopochiuUtils.get_screen_coords_for(chr, chr.dialog_pos).floor() / (
 			E.scale if E.settings.scale_gui else Vector2.ONE
 		),
 	})
