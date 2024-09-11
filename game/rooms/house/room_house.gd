@@ -10,8 +10,7 @@ var state: Data = load("res://game/rooms/house/room_house.tres")
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func _on_room_entered() -> void:
-	#TODO A.mx_two_popochius.play()
-	pass
+	A.mx_two_popochius.play()
 
 # What happens when the room changing transition finishes. At this point the room
 # is visible.

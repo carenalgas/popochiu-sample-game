@@ -11,8 +11,10 @@ func _on_click() -> void:
 	await C.player.walk_to_clicked()
 	await C.player.face_left()
 	await C.player.say("Hey! An apple!")
+	await A.sfx_tree_impact.play(true)
+	R.get_prop("Tree").change_frame(1)
+	await A.sfx_apple_fall.play(true)
 	I.Apple.add()
-	R.get_prop("Tree").change_frame(0)
 	await C.player.face_down()
 	await C.player.say("Popsy will be happy!")
 
