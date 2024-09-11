@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu4tb36dhwdsa"]
+[gd_scene load_steps=10 format=3 uid="uid://bu4tb36dhwdsa"]
 
 [ext_resource type="Script" path="res://game/rooms/outside/room_outside.gd" id="1_jpjo6"]
 [ext_resource type="PackedScene" uid="uid://dn1w5www2h22w" path="res://game/rooms/outside/props/bg/prop_bg.tscn" id="2_cpu42"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://6cgdnx0lskk0" path="res://game/rooms/outside/hotspots/door/hotspot_door.tscn" id="5_s3q2d"]
 [ext_resource type="PackedScene" uid="uid://ccschgo02th6u" path="res://game/rooms/outside/hotspots/bushes/hotspot_bushes.tscn" id="6_a8ptq"]
 [ext_resource type="PackedScene" uid="uid://dutyqb10pc7mx" path="res://game/rooms/outside/markers/enter_pos/marker_enter_pos.tscn" id="8_jdih4"]
+[ext_resource type="PackedScene" uid="uid://cgk2pxpxo6j6e" path="res://game/characters/goddiu/character_goddiu.tscn" id="9_0nud8"]
 
 [node name="RoomOutside" type="Node2D"]
 script = ExtResource("1_jpjo6")
@@ -101,3 +102,6 @@ interaction_polygon = PackedVector2Array(-93, -30, -67, -33, -60, -16, -45, -16,
 position = Vector2(178, 100)
 
 [node name="Characters" type="Node2D" parent="."]
+
+[node name="CharacterGoddiu *" parent="Characters" instance=ExtResource("9_0nud8")]
+position = Vector2(327, 141)
