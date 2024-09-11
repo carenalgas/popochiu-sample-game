@@ -8,13 +8,8 @@ extends PopochiuHotspot
 #region Virtual ####################################################################################
 # When the node is clicked
 func _on_click() -> void:
-	# Replace the call to E.command_fallback() with your code.
-	E.command_fallback()
-	# For example, you can make the player character walk to this hotspot, gaze at it, and then say
-	# something:
-#	await C.player.walk_to_clicked()
-#	await C.player.face_clicked()
-#	await C.player.say("What a nice view")
+	C.player.face_clicked()
+	C.player.say("No way to open it, it has a fixed frame.")
 
 
 func _on_double_click() -> void:
@@ -27,12 +22,9 @@ func _on_double_click() -> void:
 
 # When the node is right clicked
 func _on_right_click() -> void:
-	# Replace the call to E.command_fallback() with your code.
-	E.command_fallback()
-	# For example, you can make the player character gaze at this hotspot and then say something:
-#	await C.player.face_clicked()
-#	await C.player.say("A window")
-
+	C.player.walk_to_clicked()
+	C.player.face_up()
+	C.player.say("What a nice view!")
 
 # When the node is middle clicked
 func _on_middle_click() -> void:

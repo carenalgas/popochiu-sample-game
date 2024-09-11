@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dm58m5amahyp"]
+
+[ext_resource type="Script" path="res://game/inventory_items/toy_car/inventory_item_toy_car_state.gd" id="1_fjc32"]
+
+[resource]
+resource_name = "ToyCar"
+script = ExtResource("1_fjc32")
+script_name = "ToyCar"
+scene = "res://game/inventory_items/toy_car/inventory_item_toy_car.tscn"

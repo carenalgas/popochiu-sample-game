@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://lrylok6y7838"]
+
+[ext_resource type="Script" path="res://game/rooms/end/room_end.gd" id="1_lsi7y"]
+
+[node name="RoomEnd" type="Node2D"]
+script = ExtResource("1_lsi7y")
+script_name = "End"
+width = 356
+height = 200
+popochiu_placeholder = null
+
+[node name="WalkableAreas" type="Node2D" parent="."]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="Regions" type="Node2D" parent="."]
+
+[node name="Markers" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]

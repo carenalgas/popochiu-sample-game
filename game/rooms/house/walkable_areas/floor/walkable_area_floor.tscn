@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://game/rooms/house/walkable_areas/floor/walkable_area_floor.gd" id="1_4tfpl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nhhoh"]
-vertices = PackedVector2Array(-12, 15, 80, -30, 147, 29, 62, 39, -19, 38, -33, 18, -143, 31, -57, 15, -117, -25, -55, -5, -33, -8, -13, -4)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 0, 4), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 8, 9), PackedInt32Array(9, 8, 1, 10), PackedInt32Array(11, 10, 1), PackedInt32Array(1, 0, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-117, -25, 80, -30, 147, 29, 62, 39, -19, 38, -143, 31), PackedVector2Array(-55, -5, -57, 15, -33, 18, -12, 15, -13, -4, -33, -8)])
+vertices = PackedVector2Array(80, -30, 147, 29, 94, 11, 90, 1, 41, 6, 47, 16, -12, 15, -13, -4, 69, -3, -117, -25, 52, -1, -33, -8, -55, -5, -143, 31, -57, 15, -19, 38, -33, 18, 62, 39, 66, 22, 86, 18)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(0, 3, 8), PackedInt32Array(9, 0, 8, 10), PackedInt32Array(9, 10, 4, 7, 11), PackedInt32Array(9, 11, 12), PackedInt32Array(13, 9, 12, 14), PackedInt32Array(15, 13, 14, 16), PackedInt32Array(17, 15, 16, 6, 5, 18), PackedInt32Array(1, 17, 18, 19), PackedInt32Array(1, 19, 2)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-117, -25, 80, -30, 147, 29, 62, 39, -19, 38, -143, 31), PackedVector2Array(-55, -5, -57, 15, -33, 18, -12, 15, -13, -4, -33, -8), PackedVector2Array(52, -1, 41, 6, 47, 16, 66, 22, 86, 18, 94, 11, 90, 1, 69, -3)])
 agent_radius = 0.0
 
 [node name="Floor" type="Node2D"]
@@ -13,7 +13,7 @@ position = Vector2(178, 100)
 script = ExtResource("1_4tfpl")
 script_name = "Floor"
 description = "Floor"
-interaction_polygon = [PackedVector2Array(-117, -25, 80, -30, 147, 29, 62, 39, -19, 38, -143, 31), PackedVector2Array(-55, -5, -57, 15, -33, 18, -12, 15, -13, -4, -33, -8)]
+interaction_polygon = [PackedVector2Array(-117, -25, 80, -30, 147, 29, 62, 39, -19, 38, -143, 31), PackedVector2Array(-55, -5, -57, 15, -33, 18, -12, 15, -13, -4, -33, -8), PackedVector2Array(52, -1, 41, 6, 47, 16, 66, 22, 86, 18, 94, 11, 90, 1, 69, -3)]
 
 [node name="Perimeter" type="NavigationRegion2D" parent="."]
 visible = false

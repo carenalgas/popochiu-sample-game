@@ -17,13 +17,7 @@ func _on_room_set() -> void:
 
 # When the node is clicked
 func _on_click() -> void:
-	# Replace the call to E.command_fallback() to implement your code.
-	E.command_fallback()
-	# For example, you can make the player character walk to this character, gaze at it, and then
-	# say something:
-#	await C.player.walk_to_clicked()
-#	await C.player.face_clicked()
-#	await C.player.say("Hi!")
+	D.ChatWithPopsy.start()
 
 
 func _on_double_click() -> void:
@@ -34,11 +28,8 @@ func _on_double_click() -> void:
 
 # When the node is right clicked
 func _on_right_click() -> void:
-	# Replace the call to E.command_fallback() to implement your code.
-	E.command_fallback()
-	# For example, you can make the player character gaze at this character and then say something:
-#	await C.player.face_clicked()
-#	await C.player.say("Is someone...")
+	await C.player.face_clicked()
+	await C.player.say("Popsy can be a handful, but he's also adorable.")
 
 
 # When the node is middle clicked
@@ -49,12 +40,26 @@ func _on_middle_click() -> void:
 
 # When the node is clicked and there is an inventory item selected
 func _on_item_used(_item: PopochiuInventoryItem) -> void:
-	# Replace the call to E.command_fallback() to implement your code.
-	E.command_fallback()
-	# For example, you can make the player character say something when the Key item is used in this
-	# character. Note that you have to change the name of the `_item` parameter to `item`.
-#	if item == I.Key:
-#		await C.player.say("I don't want to give up my key")
+	if _item == I.ToyCar:
+		await C.player.walk_to_clicked()
+		await C.player.say("Maybe if you played with your toy car a little bit, you wouldn't feel hungry.")
+		await I.ToyCar.remove()
+		await C.Popsy.say("Yay! My toy car! Vrooom!!!")
+		await C.player.face_down()
+		await C.player.say("I hope this will keep him busy for a while!")
+	if _item == I.Apple:
+		## An example on how to use queues for cutscenes
+		## That's an optional way to write them
+		await E.queue([
+			C.player.queue_walk_to_clicked(),
+			"Player: Here! A juicy apple for you!",
+			I.Apple.queue_remove(),
+			"Popsy: Yeeeee!!!",
+			E.queue_wait(1.5),
+			"Popsy(sad): But I wanted a GREEN apple..."
+		])
+		
+		R.goto_room("End")
 
 
 # Use it to play the idle animation for the character
@@ -70,7 +75,10 @@ func _play_walk(target_pos: Vector2) -> void:
 
 # Use it to play the talk animation for the character
 func _play_talk() -> void:
-	super()
+	if emotion == "sad":
+		play_animation("cry")
+	else:
+		super()
 
 
 # Use it to play the grab animation for the character
