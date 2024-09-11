@@ -3,10 +3,14 @@ extends PopochiuRoom
 
 const Data := preload('room_end_state.gd')
 
-var state: Data = load("res://game/rooms/end/room_end.tres")
+var state: Data = load('res://game/rooms/end/room_end.tres')
 
 
-#region Virtual ####################################################################################
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ GODOT ░░░░
+# TODO: Overwrite Godot's methods
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ VIRTUAL ░░░░
 # What happens when Popochiu loads the room. At this point the room is in the
 # tree but it is not visible
 func _on_room_entered() -> void:
@@ -16,8 +20,9 @@ func _on_room_entered() -> void:
 # What happens when the room changing transition finishes. At this point the room
 # is visible.
 func _on_room_transition_finished() -> void:
-	# You can use await E.queue([]) to excecute a sequence of instructions
-	pass
+	%TheEnd.text = "THE"
+	await E.wait(1.5)
+	%TheEnd.text = "THE END"
 
 
 # What happens before Popochiu unloads the room.
@@ -27,4 +32,9 @@ func _on_room_exited() -> void:
 	pass
 
 
-#endregion
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PUBLIC ░░░░
+# You could put public functions here
+
+
+# ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ PRIVATE ░░░░
+# You could put private functions here

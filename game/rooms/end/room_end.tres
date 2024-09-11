@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://cqbhnb5yupks7"]
 
-[ext_resource type="Script" path="res://game/rooms/end/room_end_state.gd" id="1_texpq"]
+[ext_resource type="Script" path="res://game/rooms/end/room_end_state.gd" id="1_teooj"]
 
 [resource]
 resource_name = "End"
-script = ExtResource("1_texpq")
+script = ExtResource("1_teooj")
 script_name = "End"
 scene = "res://game/rooms/end/room_end.tscn"
 visited = false
