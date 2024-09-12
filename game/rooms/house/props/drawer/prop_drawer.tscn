@@ -82,4 +82,3 @@ hframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_obb72")
 }
-autoplay = "drawer"

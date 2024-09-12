@@ -46,7 +46,7 @@ func _on_item_used(_item: PopochiuInventoryItem) -> void:
 		await C.player.walk_to_clicked()
 		await C.player.face_clicked()
 		await I.Key.remove()
-		#await A.sfx_door_open.play()
+		await A.sfx_door_open.play()
 		await change_frame(1)
 	else:
 		await C.player.say("This won't help!")

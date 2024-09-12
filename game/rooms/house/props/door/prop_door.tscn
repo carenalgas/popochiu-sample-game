@@ -82,4 +82,3 @@ hframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_tafkb")
 }
-autoplay = "door"

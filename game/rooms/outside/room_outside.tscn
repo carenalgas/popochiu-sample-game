@@ -30,7 +30,7 @@ metadata/_popochiu_aseprite_config_ = {
 "prop_clickable": false,
 "prop_visible": true,
 "tag_name": "bg",
-"to": 1.0
+"to": 2.0
 }, {
 "direction": "forward",
 "from": 0,
@@ -39,7 +39,7 @@ metadata/_popochiu_aseprite_config_ = {
 "prop_clickable": false,
 "prop_visible": true,
 "tag_name": "house",
-"to": 1.0
+"to": 2.0
 }, {
 "direction": "forward",
 "from": 0,
@@ -48,7 +48,7 @@ metadata/_popochiu_aseprite_config_ = {
 "prop_clickable": true,
 "prop_visible": true,
 "tag_name": "tree",
-"to": 2.0
+"to": 3.0
 }, {
 "import": false,
 "loops": false,
@@ -76,9 +76,6 @@ metadata/_popochiu_aseprite_config_ = {
 [node name="House" parent="Props" instance=ExtResource("3_yclh5")]
 
 [node name="Tree" parent="Props" instance=ExtResource("4_3bw4q")]
-baseline = 26
-walk_to_point = Vector2(-112.557, 20.7653)
-interaction_polygon = PackedVector2Array(-184, -26, -190, -52, -178, -77, -148, -84, -126, -72, -117, -54, -120, -35, -140, -24, -137, 33, -160, 33, -160, -22)
 
 [node name="Hotspots" type="Node2D" parent="."]
 

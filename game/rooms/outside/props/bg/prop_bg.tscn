@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game/rooms/outside/props/bg/prop_bg.gd" id="1_qqcha"]
 [ext_resource type="Texture2D" uid="uid://4cs18ht65ykl" path="res://game/rooms/outside/props/bg/bg.png" id="2_3k73v"]
 
-[sub_resource type="Animation" id="Animation_ttsny"]
+[sub_resource type="Animation" id="Animation_sbgys"]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,9 +54,9 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_56f7r"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i1p7x"]
 _data = {
-"bg": SubResource("Animation_ttsny")
+"bg": SubResource("Animation_sbgys")
 }
 
 [node name="Bg" type="Area2D"]
@@ -83,6 +83,6 @@ texture = ExtResource("2_3k73v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_56f7r")
+"": SubResource("AnimationLibrary_i1p7x")
 }
 autoplay = "bg"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://game/rooms/outside/props/house/prop_house.gd" id="1_wq15l"]
 [ext_resource type="Texture2D" uid="uid://dv7nhmbs8nxqm" path="res://game/rooms/outside/props/house/house.png" id="2_4nbj4"]
 
-[sub_resource type="Animation" id="Animation_l6e3w"]
+[sub_resource type="Animation" id="Animation_2a0se"]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -54,9 +54,9 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xoc51"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mruym"]
 _data = {
-"house": SubResource("Animation_l6e3w")
+"house": SubResource("Animation_2a0se")
 }
 
 [node name="House" type="Area2D"]
@@ -81,6 +81,6 @@ texture = ExtResource("2_4nbj4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xoc51")
+"": SubResource("AnimationLibrary_mruym")
 }
 autoplay = "house"
