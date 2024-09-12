@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="AudioCueMusic" load_steps=3 format=3 uid="uid://dpooy6niher55"]
 
-[ext_resource type="AudioStream" uid="uid://dvmvlrjoxbnsx" path="res://game/rooms/house/audio/mx_two_popochius.ogg" id="1_bgeqa"]
-[ext_resource type="Script" path="res://addons/popochiu/engine/audio_manager/audio_cue_music.gd" id="2_d0d3r"]
+[ext_resource type="AudioStream" uid="uid://dvmvlrjoxbnsx" path="res://game/rooms/house/audio/mx_two_popochius.ogg" id="1_ouxy0"]
+[ext_resource type="Script" path="res://addons/popochiu/engine/audio_manager/audio_cue_music.gd" id="2_ikjgh"]
 
 [resource]
 resource_name = "mx_two_popochius"
-script = ExtResource("2_d0d3r")
-audio = ExtResource("1_bgeqa")
+script = ExtResource("2_ikjgh")
+audio = ExtResource("1_ouxy0")
 loop = true
 is_2d = false
 can_play_simultaneous = true
