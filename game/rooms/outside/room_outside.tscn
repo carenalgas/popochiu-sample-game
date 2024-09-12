@@ -13,7 +13,7 @@
 [node name="RoomOutside" type="Node2D"]
 script = ExtResource("1_jpjo6")
 script_name = "Outside"
-width = 356
+width = 448
 height = 200
 popochiu_placeholder = null
 metadata/_popochiu_aseprite_config_ = {
