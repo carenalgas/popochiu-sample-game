@@ -3,7 +3,7 @@ class_name PopochiuClickable
 extends Area2D
 ## Handles an Area2D that reacts to mouse events.
 ##
-## Is the base clase for [PopochiuProp], [PopochiuHotspot] and [PopochiuCharacter].
+## Is the base class for [PopochiuProp], [PopochiuHotspot] and [PopochiuCharacter].
 ## It has a property to determine when the object should render in front or back to other, another
 ## property that can be used to define the position to which characters will move to when moving
 ## to the item, and tow [CollisionPolygon2D] which are used to handle players interaction and
@@ -17,11 +17,13 @@ const CURSOR := preload("res://addons/popochiu/engine/cursor/cursor.gd")
 ## The text shown to players when the cursor hovers the object.
 @export var description := ""
 ## Whether the object will listen to interactions.
-@export var clickable := true : set = set_clickable
+@export var clickable := true: set = set_clickable
 ## The [code]y[/code] position of the baseline relative to the center of the object.
-@export var baseline := 0 : set = set_baseline
-## The [Vector2] position where characters will move when aproaching the object.
-@export var walk_to_point := Vector2.ZERO : set = set_walk_to_point
+@export var baseline := 0
+## The [Vector2] position where characters will move when approaching the object.
+@export var walk_to_point := Vector2.ZERO
+## The [Vector2] position where characters will turn looking at the object.
+@export var look_at_point := Vector2.ZERO
 ## The cursor to use when the mouse hovers the object.
 @export var cursor: CURSOR.Type = CURSOR.Type.NONE
 ## Whether the object will be rendered always above other objects in the room.
@@ -34,7 +36,7 @@ const CURSOR := preload("res://addons/popochiu/engine/cursor/cursor.gd")
 @export var interaction_polygon_position := Vector2.ZERO
 
 ## The [PopochiuRoom] to which the object belongs.
-var room: Node2D = null : set = set_room
+var room: Node2D = null: set = set_room
 ## The number of times this object has been left-clicked.
 var times_clicked := 0
 ## The number of times this object has been double-clicked.
@@ -48,9 +50,9 @@ var times_middle_clicked := 0
 ## Stores the last [enum MouseButton] pressed on this object.
 var last_click_button := -1
 
-# Used for setting the double click delay. Windows default is 500 miliseconds.
+# Used for setting the double click delay. Windows default is 500 milliseconds.
 var _double_click_delay: float = 0.2
-# Used for tracking if a double click has occured.
+# Used for tracking if a double click has occurred.
 var _has_double_click: bool = false
 
 @onready var _description_code := description
@@ -59,10 +61,10 @@ var _has_double_click: bool = false
 #region Godot ######################################################################################
 func _ready():
 	add_to_group("PopochiuClickable")
-	
+
 	if Engine.is_editor_hint():
 		hide_helpers()
-		
+
 		# Add interaction polygon to the proper group
 		if (get_node_or_null("InteractionPolygon") != null):
 			get_node("InteractionPolygon").add_to_group(
@@ -83,7 +85,7 @@ func _ready():
 		else:
 			get_node("InteractionPolygon").polygon = interaction_polygon
 			get_node("InteractionPolygon").position = interaction_polygon_position
-		
+
 		# If we are in the editor, we're done
 		return
 
@@ -91,13 +93,13 @@ func _ready():
 	# Update the node's polygon when:
 	if (
 		get_node_or_null("InteractionPolygon") # there is an InteractionPolygon node
-		and not self is PopochiuCharacter # avoids reseting the polygon (see issue #158)
+		and not self is PopochiuCharacter # avoids resetting the polygon (see issue #158)
 	):
 		get_node("InteractionPolygon").polygon = interaction_polygon
 		get_node("InteractionPolygon").position = interaction_polygon_position
 
 	visibility_changed.connect(_toggle_input)
-	
+
 	# Ignore this object if it is a temporary one (its name has *)
 	if clickable and not "*" in name:
 		# Connect to own signals
@@ -105,10 +107,10 @@ func _ready():
 		mouse_exited.connect(_on_mouse_exited)
 		# Fix #183 by listening only to inputs in this CollisionObject2D
 		input_event.connect(_on_input_event)
-		
+
 		# Connect to singleton signals
-		E.language_changed.connect(_translate)
-	
+		PopochiuUtils.e.language_changed.connect(_translate)
+
 	_translate()
 
 
@@ -160,21 +162,16 @@ func _on_item_used(item: PopochiuInventoryItem) -> void:
 #endregion
 
 #region Public #####################################################################################
-## Used by the plugin to hide the visual helpers that show the [member baseline] and
-## [member walk_to_point] in the 2D Canvas Editor when this node is unselected in the Scene panel.
+## Used by the plugin to hide the visual helpers that show the interaction polygon
+## in the 2D Canvas Editor when this node is unselected in the Scene panel.
 func hide_helpers() -> void:
-	# TODO: visibility logic for gizmos
-
 	if get_node_or_null("InteractionPolygon"):
 		$InteractionPolygon.hide()
 
 
-## Used by the plugin to make visible the visual helpers that show the [member baseline] and
-## [member walk_to_point] of the object in the 2D Canvas Editor when the is selected in the
-## Scene panel.
+## Used by the plugin to make visible the visual helpers that show the interaction polygon
+## in the 2D Canvas Editor when this node is unselected in the Scene panel.
 func show_helpers() -> void:
-	# TODO: visibility logic for gizmos
-
 	if get_node_or_null("InteractionPolygon"):
 		$InteractionPolygon.show()
 
@@ -182,26 +179,26 @@ func show_helpers() -> void:
 ## Hides this Node.[br][br]
 ## [i]This method is intended to be used inside a [method Popochiu.queue] of instructions.[/i]
 func queue_disable() -> Callable:
-	return func (): await disable()
+	return func(): await disable()
 
 
 ## Hides this Node.
 func disable() -> void:
 	self.visible = false
-	
+
 	await get_tree().process_frame
 
 
 ## Shows this Node.[br][br]
 ## [i]This method is intended to be used inside a [method Popochiu.queue] of instructions.[/i]
 func queue_enable() -> Callable:
-	return func (): await enable()
+	return func(): await enable()
 
 
 ## Shows this Node.
 func enable() -> void:
 	self.visible = true
-	
+
 	await get_tree().process_frame
 
 
@@ -213,16 +210,7 @@ func get_description() -> String:
 		if description.is_empty():
 			description = name
 		return description
-	return E.get_text(description)
-
-
-## Returns the global position of [member walk_to_point].
-func get_walk_to_point() -> Vector2:
-	if Engine.is_editor_hint():
-		return walk_to_point
-	elif is_inside_tree():
-		return to_global(walk_to_point)
-	return walk_to_point
+	return PopochiuUtils.e.get_text(description)
 
 
 ## Called when the object is left clicked.
@@ -249,16 +237,18 @@ func on_middle_click() -> void:
 ## Called when an [param item] is used on this object.
 func on_item_used(item: PopochiuInventoryItem) -> void:
 	await _on_item_used(item)
+	# after item has been used return to normal state
+	PopochiuUtils.i.active = null
 
 
 ## Triggers the proper GUI command for the clicked mouse button identified with [param button_idx],
 ## which can be [enum MouseButton].MOUSE_BUTTON_LEFT, [enum MouseButton].MOUSE_BUTTON_RIGHT or
 ## [enum MouseButton].MOUSE_BUTTON_MIDDLE.
 func handle_command(button_idx: int) -> void:
-	var command: String = E.get_current_command_name().to_snake_case()
+	var command: String = PopochiuUtils.e.get_current_command_name().to_snake_case()
 	var prefix := "on_%s"
 	var suffix := "click"
-	
+
 	match button_idx:
 		MOUSE_BUTTON_RIGHT:
 			suffix = "right_" + suffix
@@ -267,21 +257,20 @@ func handle_command(button_idx: int) -> void:
 
 	if not command.is_empty():
 		var command_method := suffix.replace("click", command)
-		
+
 		if has_method(prefix % command_method):
 			suffix = command_method
-	
-	E.add_history({
+
+	PopochiuUtils.e.add_history({
 		action = suffix if command.is_empty() else command,
 		target = description
 	})
-	
+
 	await call(prefix % suffix)
 
 
 #endregion
 
-#endregion
 
 #region SetGet #####################################################################################
 func set_clickable(value: bool) -> void:
@@ -289,17 +278,9 @@ func set_clickable(value: bool) -> void:
 	input_pickable = clickable
 
 
-func set_baseline(value: int) -> void:
-	baseline = value
-
-
-func set_walk_to_point(value: Vector2) -> void:
-	walk_to_point = value
-
-
 func set_room(value: Node2D) -> void:
 	room = value
-	
+
 	_on_room_set()
 
 
@@ -307,61 +288,62 @@ func set_room(value: Node2D) -> void:
 
 #region Private ####################################################################################
 func _on_mouse_entered() -> void:
-	if E.hovered and is_instance_valid(E.hovered) and (
-		E.hovered.get_parent() == self or get_index() < E.hovered.get_index()
+	if PopochiuUtils.e.hovered and is_instance_valid(PopochiuUtils.e.hovered) and (
+		PopochiuUtils.e.hovered.get_parent() == self
+		or get_index() < PopochiuUtils.e.hovered.get_index()
 	):
-		E.add_hovered(self, true)
+		PopochiuUtils.e.add_hovered(self, true)
 		return
-	
-	E.add_hovered(self)
-	
-	G.mouse_entered_clickable.emit(self)
+
+	PopochiuUtils.e.add_hovered(self)
+
+	PopochiuUtils.g.mouse_entered_clickable.emit(self)
 
 
 func _on_mouse_exited() -> void:
 	last_click_button = -1
-	
-	if E.remove_hovered(self):
-		G.mouse_exited_clickable.emit(self)
+
+	if PopochiuUtils.e.remove_hovered(self):
+		PopochiuUtils.g.mouse_exited_clickable.emit(self)
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
-	if G.is_blocked or not E.hovered or E.hovered != self:
+	if PopochiuUtils.g.is_blocked or not PopochiuUtils.e.hovered or PopochiuUtils.e.hovered != self:
 		return
-	
+
 	if _is_double_click_or_tap(event):
 		times_double_clicked += 1
-		E.clicked = self
+		PopochiuUtils.e.clicked = self
 		on_double_click()
-		
+
 		return
-	
+
 	if not await _is_click_or_touch_pressed(event): return
-	
+
 	var event_index := PopochiuUtils.get_click_or_touch_index(event)
-	E.clicked = self
+	PopochiuUtils.e.clicked = self
 	last_click_button = event_index
-	
+
 	get_viewport().set_input_as_handled()
-	
+
 	match event_index:
 		MOUSE_BUTTON_LEFT:
-			if I.active:
-				await on_item_used(I.active)
+			if PopochiuUtils.i.active:
+				await on_item_used(PopochiuUtils.i.active)
 			else:
 				await handle_command(event_index)
 				times_clicked += 1
 		MOUSE_BUTTON_RIGHT, MOUSE_BUTTON_MIDDLE:
-			if I.active: return
-			
+			if PopochiuUtils.i.active: return
+
 			await handle_command(event_index)
-			
+
 			if event_index == MOUSE_BUTTON_RIGHT:
 				times_right_clicked += 1
 			elif event_index == MOUSE_BUTTON_MIDDLE:
 				times_middle_clicked += 1
-	
-	E.clicked = null
+
+	PopochiuUtils.e.clicked = null
 
 
 func _toggle_input() -> void:
@@ -373,11 +355,11 @@ func _translate() -> void:
 	if (
 		Engine.is_editor_hint()
 		or not is_inside_tree()
-		or not E.settings.use_translations
+		or not PopochiuUtils.e.settings.use_translations
 	):
 		return
-	
-	description = E.get_text("%s-%s" % [get_tree().current_scene.name, _description_code])
+
+	description = PopochiuUtils.e.get_text("%s-%s" % [get_tree().current_scene.name, _description_code])
 
 
 # ---- @anthonyirwin82 -----------------------------------------------------------------------------
@@ -392,8 +374,8 @@ func _is_click_or_touch(event: InputEvent) -> bool:
 		or (event is InputEventScreenTouch and not event.double_tap)
 	):
 		# This delay is need to prevent a single click being detected before double click
-		await E.wait(_double_click_delay)
-		
+		await PopochiuUtils.e.wait(_double_click_delay)
+
 		if not _has_double_click:
 			return (event is InputEventMouseButton or event is InputEventScreenTouch)
 
@@ -417,19 +399,19 @@ func _is_double_click_or_tap(event: InputEvent) -> bool:
 		or (event is InputEventScreenTouch and event.double_tap)
 	):
 		_has_double_click = true
-		
+
 		if event is InputEventMouseButton:
 			return event.double_click
 		elif event is InputEventScreenTouch:
 			return event.double_tap
-	
+
 	return false
 
 
 # Resets the double click status to false by default
 func _reset_double_click(double_click: bool = false) -> void:
 	# this delay is needed to prevent single click being detected after double click event
-	await E.wait(_double_click_delay)
+	await PopochiuUtils.e.wait(_double_click_delay)
 	_has_double_click = double_click
 # ----------------------------------------------------------------------------- @anthonyirwin82 ----
 
