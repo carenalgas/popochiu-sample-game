@@ -78,24 +78,29 @@ metadata/_popochiu_aseprite_config_ = {
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Background" parent="Props" instance=ExtResource("2_s3gfn")]
+look_at_point = Vector2(-10, -10)
 
 [node name="Door" parent="Props" instance=ExtResource("3_tqtm2")]
 baseline = -30
 walk_to_point = Vector2(-80.6351, -17.6389)
+look_at_point = Vector2(-90.6351, -27.6389)
 interaction_polygon = PackedVector2Array(-101, -72, -84, -82, -64, -69, -64, -28, -102, -27)
 
 [node name="Drawer" parent="Props" instance=ExtResource("4_63et0")]
 baseline = -6
 walk_to_point = Vector2(-98.274, -7.87451)
+look_at_point = Vector2(-108.274, -17.8745)
 interaction_polygon = PackedVector2Array(-151, -26, -139, -36, -123, -31, -125, 3, -150, 3)
 
 [node name="Table" parent="Props" instance=ExtResource("5_lf33p")]
 baseline = 3
+look_at_point = Vector2(-10, -10)
 interaction_polygon = PackedVector2Array(-53, -13, -34, -20, -16, -13, -16, 11, -55, 11)
 
 [node name="ToyCar" parent="Props" instance=ExtResource("6_ccl4h")]
 baseline = 17
 walk_to_point = Vector2(-72.1306, 7.87451)
+look_at_point = Vector2(-82.1306, -2.12549)
 interaction_polygon = PackedVector2Array(-98, 10, -82, 11, -78, 22, -104, 22)
 
 [node name="Hotspots" type="Node2D" parent="."]
@@ -104,6 +109,7 @@ interaction_polygon = PackedVector2Array(-98, 10, -82, 11, -78, 22, -104, 22)
 position = Vector2(178, 100)
 baseline = -100
 walk_to_point = Vector2(-20.4738, -23.3086)
+look_at_point = Vector2(-22.5573, -74.5874)
 interaction_polygon = PackedVector2Array(-44, -91, -21, -99, 1, -91, 5, -75, 1, -55, -23, -49, -44, -54, -49, -74)
 
 [node name="Regions" type="Node2D" parent="."]
@@ -115,3 +121,4 @@ interaction_polygon = PackedVector2Array(-44, -91, -21, -99, 1, -91, 5, -75, 1, 
 [node name="CharacterPopsy *" parent="Characters" instance=ExtResource("9_ykiua")]
 position = Vector2(249, 106)
 walk_to_point = Vector2(-53.2318, -8.50449)
+look_at_point = Vector2(-1.03082, -17.6563)

@@ -72,10 +72,13 @@ metadata/_popochiu_aseprite_config_ = {
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Bg" parent="Props" instance=ExtResource("2_cpu42")]
+look_at_point = Vector2(-10, -10)
 
 [node name="House" parent="Props" instance=ExtResource("3_yclh5")]
+look_at_point = Vector2(-10, -10)
 
 [node name="Tree" parent="Props" instance=ExtResource("4_3bw4q")]
+look_at_point = Vector2(-122.557, 10.7653)
 
 [node name="Hotspots" type="Node2D" parent="."]
 
@@ -83,12 +86,14 @@ metadata/_popochiu_aseprite_config_ = {
 position = Vector2(178, 100)
 baseline = 14
 walk_to_point = Vector2(145.593, 32.0918)
+look_at_point = Vector2(178.198, 9.75862)
 interaction_polygon = PackedVector2Array(163, -11, 181, -21, 200, -7, 197, 36, 164, 26)
 
 [node name="Bushes" parent="Hotspots" instance=ExtResource("6_a8ptq")]
 position = Vector2(178, 100)
 baseline = 5
 walk_to_point = Vector2(2.35968, -4.95533)
+look_at_point = Vector2(-40.155, -13.8341)
 interaction_polygon = PackedVector2Array(-93, -30, -67, -33, -60, -16, -45, -16, -34, -29, -16, -30, -5, -16, -11, -2, -33, -1, -38, 11, -71, 12, -75, -4, -92, -4, -100, -13)
 
 [node name="Regions" type="Node2D" parent="."]
@@ -102,3 +107,4 @@ position = Vector2(178, 100)
 
 [node name="CharacterGoddiu *" parent="Characters" instance=ExtResource("9_0nud8")]
 position = Vector2(327, 141)
+look_at_point = Vector2(-10, -10)

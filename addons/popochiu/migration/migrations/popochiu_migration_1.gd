@@ -9,7 +9,7 @@ const STEPS = [
 	"Delete [b]res://popochiu/autoloads/[/b].",
 	"Move folders in [b]res://popochiu/[/b] to [b]res://game/[/b]. (pre [i]beta 1[/i])",
 	"Rename folders and files to snake_case. (pre [i]alpha 2[/i])",
-	"Select the default GUI template. (pre [i]beta 1[/i])",
+	#"Select the default GUI template. (pre [i]beta 1[/i])",
 	"Update paths in [b]res://game/popochiu_data.cfg[/b]. (pre [i]beta 1[/i])",
 	"Rename [b]res://popochiu/[/b] references to [b]res://game/[/b]. (pre [i]beta 1[/i])",
 	"Rename [b]item_xxx[/b] to [b]inventory_item_xxx[/b] for inventory items. (pre [i]beta 1[/i])",
@@ -35,7 +35,7 @@ func _do_migration() -> bool:
 			_delete_popochiu_folder_autoloads,
 			_move_game_data,
 			_rename_files_and_folders_to_snake_case,
-			_select_gui_template,
+			#_select_gui_template,
 			_rebuild_popochiu_data_file,
 			_rename_game_folder_references,
 			_update_inventory_items,
@@ -192,7 +192,7 @@ func _rename_folders_to_snake_case(path: String) -> bool:
 ## is no GUI template selected.
 func _select_gui_template() -> Completion:
 	if PopochiuResources.get_data_value("ui", "template", "").is_empty():
-		# Assume the project is from Popochiu 1.x or Popochiu 2 - Alpha X and assign the SimpleCick
+		# Assume the project is from Popochiu 1.x or Popochiu 2 - Alpha X and assign the SimpleClick
 		# GUI template
 		await PopochiuGuiTemplatesHelper.copy_gui_template(
 			DEFAULT_GUI_TEMPLATE,
@@ -273,7 +273,7 @@ func _rename_game_folder_references() -> Completion:
 
 
 ## Updates all inventory items in the project so:[br]
-## - Their files (.tscn, .gd, and .tres) match the namig defined since beta-1 (inventory_item_*.*).
+## - Their files (.tscn, .gd, and .tres) match the naming defined since beta-1 (inventory_item_*.*).
 ## - All the paths inside those files point to the new file.
 ## - Fixes a naming issue from alpha-1 where the root node name was set wrong. And also applies the
 ## [constant CanvasItem.TEXTURE_FILTER_NEAREST] to each node in case the project is marked as
